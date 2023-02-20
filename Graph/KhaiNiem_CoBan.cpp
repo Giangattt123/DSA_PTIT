@@ -75,6 +75,7 @@ inline ll lcm(ll a,ll b){return a/gcd(a,b)*b;}
    Liên thông mạnh với đồ thị có hướng: nếu giữa 2 đỉnh bất kì u , v luôn tồn tại đường đi tư u -> v
    Liên thông yếu với đồ thị có hướng: nếu đồ thị vô hướng tương ứng của nó liên thông
 */
+
 /* Các cách biểu diễn đồ thị
 	1. Ma trận kề với đồ thị vô hướng: n đỉnh là ma trận vuông cỡ n * n các phần tử nhận 0 hoặc 1
 	( A[i][j] = {0 ,1} : nếu có cạnh nối giữa i đến j thì la 1 và ngược lại )
@@ -90,9 +91,33 @@ inline ll lcm(ll a,ll b){return a/gcd(a,b)*b;}
 	4. Danh sách kề
 	5. Biểu diễn đồ thị với ma trận liên thuộc
 */
-	
-		
-		
+// Một đồ thị vô hướng gọi là liên thông -> Tồn tại đường đi giữa 2 đỉnh bất kì
+
+/* Một đồ thị vô hướng G ko liên thông -> hợp của các thành phần con liên thông->
+ko có các đỉnh chung -> các thành phần liên thông */
+
+// Một đồ thị vô hướng G liên thông -> Số thplt là 1
+
+/* Thuật toán kiểm tra tính liên thông của đồ thị vô hướng G
+Mặc định : 1 -> lt , 2 -> nlt.
+B1 : Thực hiện bfs(1)/dfs(1).
+B2 : Đếm k là số lượng các đỉnh được duyệt.
+B3 : Nếu k == n -> 1 , k < n -> 0
+*/
+
+/* Thành phần liên thông của đồ thị vô hướng
+- Cho đồ thị G=<V , E> 
+Output : + Số k là số các thành phần liên thông của G
+		 + Số thứ tự các thành phần liên thông chứa u của mọi đỉnh u
+*/
+
+/* Đỉnh trụ(đỉnh khớp hay đỉnh cắt) là khi ta xóa đỉnh đó và xóa các cạnh liên thuộc của đỉnh đó
+ta được một đồ thị mới {G}/u chứa nhiều thành phần liên thông hơn
+*/
+
+/* Cạnh e = (u , v) là cạnh cầu( hay cạnh cắt) là khi ta xóa cạnh đó ta cũng sẽ được đồ thị mới
+{G}/e chứa nhiều thành phần liên thông hơn.
+*/		
 
 
 int main(){

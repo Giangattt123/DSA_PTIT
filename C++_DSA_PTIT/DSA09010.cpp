@@ -34,28 +34,49 @@ inline ll gcd(ll a,ll b) {
 inline ll lcm(ll a,ll b) {
 	return a/gcd(a,b)*b;
 }
-
-void insertion_sort(int a[] , int n) {
-	for(int i = 0; i < n; ++i) {
-		int j = i;
-		while(j > 0 && a[j] < a[j - 1]) {
-			swap(a[j], a[j - 1]);
-			j--;
+// Ki?m tra tính liên thông m?nh
+int n, m;
+bool visited[1005];
+vector<int> ke[1005];
+void dfs(int u) {
+	visited[u] = true;
+	for(auto x : ke[u]) {
+		if(!visited[x]) {
+			dfs(x);
 		}
-		cout << "Buoc " + to_string(i) + ": ";
-		for (int j = 0; j <= i; ++j) {
-			cout << a[j] << " ";
-		}
-		cout << endl;
 	}
+}
+void input() {
+	cin >> n >> m;
+	for(int i = 0 ; i < m ; i++) {
+		int x, y;
+		cin >> x >> y;
+		ke[x].push_back(y);
+//		ke[y].push_back(x);
+	}
+	for(int i = 1 ; i <= n ; i++)
+		sort(ke[i].begin(), ke[i].end());
 }
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	cout.tie(0);
-	int n;
-	cin >> n;
-	int a[n];
-	for(int i = 0 ; i < n ; i++) cin >> a[i];
-	insertion_sort(a, n);
+	int t;
+	cin >> t;
+	while(t--) {
+		memset(visited, false, sizeof(visited));
+		memset(ke, false, sizeof(ke));
+		input();
+		int flag = 1;
+		for(int i = 1 ; i <= n ; i++) {
+			memset(visited, false, sizeof(visited));
+			dfs(i);
+			for(int j = 1 ; j <= n ; j++) {
+				if(visited[j] == false) 
+					flag = 0;
+			}
+		}
+		if(!flag) cout << "NO" << endl;
+		else cout << "YES" << endl;
+	}
 }

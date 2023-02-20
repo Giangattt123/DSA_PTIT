@@ -22,40 +22,34 @@ typedef vector<pi> vii;
 
 const int MOD = (int) 1e9+7;
 const int INF = (int) 1e9+1;
-inline ll gcd(ll a,ll b) {
-	ll r;
-	while(b) {
-		r=a%b;
-		a=b;
-		b=r;
-	}
-	return a;
-}
-inline ll lcm(ll a,ll b) {
-	return a/gcd(a,b)*b;
-}
+inline ll gcd(ll a,ll b){ll r;while(b){r=a%b;a=b;b=r;}return a;}
+inline ll lcm(ll a,ll b){return a/gcd(a,b)*b;}
+// T? h?p C(n , k)
+ll c[1005][1005];
 
-void insertion_sort(int a[] , int n) {
-	for(int i = 0; i < n; ++i) {
-		int j = i;
-		while(j > 0 && a[j] < a[j - 1]) {
-			swap(a[j], a[j - 1]);
-			j--;
-		}
-		cout << "Buoc " + to_string(i) + ": ";
-		for (int j = 0; j <= i; ++j) {
-			cout << a[j] << " ";
-		}
-		cout << endl;
-	}
+void nCk() {
+    for(int i = 0; i <= 1000; ++i) {
+        for(int j = 0; j <= i; ++j) {
+            if(j == 0 || j == i)
+                c[i][j] = 1;
+            else if (j == 1 || j == i - 1)
+                c[i][j] = i;
+            else
+                c[i][j] = c[i - 1][j - 1] + c[i - 1][j];
+            c[i][j] %= MOD;
+        }
+    }
 }
-int main() {
+int main(){
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	cout.tie(0);
-	int n;
-	cin >> n;
-	int a[n];
-	for(int i = 0 ; i < n ; i++) cin >> a[i];
-	insertion_sort(a, n);
+	nCk();
+	int t;
+	cin >> t;
+	while(t--){
+		int n , k;
+		cin >> n >> k;
+		cout << c[n][k] << endl;
+	}
 }

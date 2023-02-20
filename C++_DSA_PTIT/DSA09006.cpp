@@ -34,28 +34,57 @@ inline ll gcd(ll a,ll b) {
 inline ll lcm(ll a,ll b) {
 	return a/gcd(a,b)*b;
 }
-
-void insertion_sort(int a[] , int n) {
-	for(int i = 0; i < n; ++i) {
-		int j = i;
-		while(j > 0 && a[j] < a[j - 1]) {
-			swap(a[j], a[j - 1]);
-			j--;
+const int maxn = 1005;
+vector<int> ke[maxn];
+bool visited[maxn];
+int parent[maxn];
+int n, m, s, t;
+void nhap() {
+	cin >> n >> m >> s >> t;
+	for(int i = 0 ; i < m ; i++) {
+		int x, y;
+		cin >> x >> y;
+		ke[x].push_back(y);
+		ke[y].push_back(x);
+	}
+}
+void dfs(int u) {
+	visited[u] = true;
+	for(auto x : ke[u]) {
+		if(!visited[x]) {
+			dfs(x);
+			parent[x] = u;
 		}
-		cout << "Buoc " + to_string(i) + ": ";
-		for (int j = 0; j <= i; ++j) {
-			cout << a[j] << " ";
+	}
+}
+void solve() {
+	dfs(s);
+	if(!visited[t]) cout << -1 << endl;
+	else {
+		vector<int> res;
+		while(t != s) {
+			res.push_back(t);
+			t = parent[t];
 		}
+		res.push_back(s);
+		reverse(res.begin(), res.end());
+		for(int x : res)
+			cout << x << " ";
 		cout << endl;
 	}
 }
+
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	cout.tie(0);
-	int n;
-	cin >> n;
-	int a[n];
-	for(int i = 0 ; i < n ; i++) cin >> a[i];
-	insertion_sort(a, n);
+	int t;
+	cin >> t;
+	while(t--) {
+		memset(visited , false , sizeof(visited));
+		memset(parent , 0 , sizeof(parent));
+		memset(ke , 0 , sizeof(ke));
+		nhap();
+		solve();
+	}
 }

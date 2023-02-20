@@ -22,40 +22,27 @@ typedef vector<pi> vii;
 
 const int MOD = (int) 1e9+7;
 const int INF = (int) 1e9+1;
-inline ll gcd(ll a,ll b) {
-	ll r;
-	while(b) {
-		r=a%b;
-		a=b;
-		b=r;
-	}
-	return a;
+inline ll gcd(ll a,ll b){ll r;while(b){r=a%b;a=b;b=r;}return a;}
+inline ll lcm(ll a,ll b){return a/gcd(a,b)*b;}
+void solve() {
+    int n; 
+	cin >> n;
+    vector<int> a(n);
+    for (int &i : a) cin >> i;
+    sort(a.begin(), a.end());
+    int ans = 1e9;
+    for(int i = 1; i < n; ++i)
+        ans = min(ans, a[i] - a[i - 1]);
+    cout << ans;
 }
-inline ll lcm(ll a,ll b) {
-	return a/gcd(a,b)*b;
-}
-
-void insertion_sort(int a[] , int n) {
-	for(int i = 0; i < n; ++i) {
-		int j = i;
-		while(j > 0 && a[j] < a[j - 1]) {
-			swap(a[j], a[j - 1]);
-			j--;
-		}
-		cout << "Buoc " + to_string(i) + ": ";
-		for (int j = 0; j <= i; ++j) {
-			cout << a[j] << " ";
-		}
-		cout << endl;
-	}
-}
-int main() {
+int main(){
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	cout.tie(0);
-	int n;
-	cin >> n;
-	int a[n];
-	for(int i = 0 ; i < n ; i++) cin >> a[i];
-	insertion_sort(a, n);
+	int t;
+	cin >> t;
+	while(t--){
+		solve();
+		cout << endl;
+	}
 }

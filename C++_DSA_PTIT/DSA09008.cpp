@@ -24,15 +24,11 @@ const int MOD = (int) 1e9+7;
 const int INF = (int) 1e9+1;
 inline ll gcd(ll a,ll b){ll r;while(b){r=a%b;a=b;b=r;}return a;}
 inline ll lcm(ll a,ll b){return a/gcd(a,b)*b;}
-/* Articulation Point : đỉnh trụ hay khớp -> số lượng các đỉnh trụ
-Trong đồ thị vô hướng, một đỉnh C được gọi là khớp, nếu như ta bỏ đi đỉnh C và các cạnh liên
-thuộc với nó thì sẽ làm tăng số thành phần liên thông của đồ thị. Bài toán đặt ra là phải liệt kê hết
-các đỉnh trụ hay là khớp của đồ thị
-*/
+// Đếm số thành phần liên thông
 const int maxn = 1005;
+int n, m;
 bool visited[maxn];
 vector<int> adj[maxn];
-int n , m;
 void nhap(){
 	cin >> n >> m;
 	for(int i = 0 ; i < m ; i++){
@@ -47,43 +43,25 @@ void dfs(int u){
 	for(int v : adj[u]){
 		if(!visited[v])
 			dfs(v);
-	}	
-}
-void articulation_point(){
-	int ans = 0;
-	int count_tplt = 0;
-	memset(visited , false , sizeof(visited));
-	for(int i = 1 ; i <= n ; i++){
-		if(!visited[i])
-			++count_tplt;
-			dfs(i);
 	}
-	vector<int> res;
-	for(int i = 1 ; i <= n ; i++){
-		memset(visited , false , sizeof(visited));
-		visited[i] = true;
-		int cnt = 0;
-		for(int j = 1 ; j <= n ; j++){
-			if(!visited[j]){
-				++cnt;
-				dfs(j);
-			}
-		}
-		if(cnt > count_tplt){
-			++ans;
-			res.push_back(i);
-		}
-		
-	}
-	cout << ans << endl;
-	for(int x : res)
-		cout << x << " ";
-//	cout << count_tplt << endl;
 }
 int main(){
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	cout.tie(0);
-	nhap();
-	articulation_point();
+	int t;
+	cin >> t;
+	while(t--){
+		int cnt_tplt = 0;
+		memset(visited , false , sizeof(visited));
+		memset(adj , 0 , sizeof(adj));
+		nhap();
+		for(int i = 1 ; i <= n ; i++){
+			if(visited[i] == false){
+				++cnt_tplt;
+				dfs(i);
+			}
+		}
+		cout << cnt_tplt << endl;
+	}
 }
