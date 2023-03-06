@@ -116,7 +116,7 @@ ta được một đồ thị mới {G}/u chứa nhiều thành phần liên th�
 */
 
 /* Cạnh e = (u , v) là cạnh cầu( hay cạnh cắt) là khi ta xóa cạnh đó ta cũng sẽ được đồ thị mới
-{G}/e chứa nhiều thành phần liên thông hơn.
+{G}/e chứa nhiều thành phần liên thông hơn(xóa cạnh không xóa đỉnh)
 */		
 
 

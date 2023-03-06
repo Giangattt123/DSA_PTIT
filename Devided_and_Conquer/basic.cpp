@@ -24,17 +24,23 @@ const int MOD = (int) 1e9+7;
 const int INF = (int) 1e9+1;
 inline ll gcd(ll a,ll b){ll r;while(b){r=a%b;a=b;b=r;}return a;}
 inline ll lcm(ll a,ll b){return a/gcd(a,b)*b;}
-// quicl sort
+/* Thuật toán chi để trị(Devide and Conquer) thường dùng để giải các lớp bài toán có thể giải theo 3 bước:
+	+B1: Devide(chia) -> chia bài toán lớn thành nhưng bài toán con có cùng kiểu với bài toán lớn.
+	+B2: Conquer(trị) -> Giải quyết các bài toán con , thông thường các bài toán con chỉ khác nhau về kiểu dữ
+		liệu nên ta có thể giải quyết chúng bằng các giải thuật đệ quy, lưu ý các bài toán con trong (chia 
+		để trị) được xử lí và thực hiện một cách độc lập.
+	+B3: Combine(tổng hợp) -> tổng hợp lại kết qur của các bài toán con để giải quyết bài toán lớn.
+*/
+
+// quick sort
 // merge sort
 // fibonacci word
 // maximum sub array
 // lũy thừa ma trận
-
+// lũy thừa nhị phân
 // divide and conquer
-
 // quicksort -> partition : phân hoạch , lomuto paritition , hoare partition
-
-// lomoto partition : chọn thằng pivot(chốt là phần tử cuối cùng)
+// lomoto partition : chọn pivot(chốt là phần tử cuối cùng)
 int partition(int a[] , int l , int r){
 	int i = l - 1;
 	int pivot = a[r];

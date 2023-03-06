@@ -1,0 +1,23 @@
+Dưới đây là một số bài tập lập trình về dãy con:
+
+1. Tìm dãy con liên tục có tổng lớn nhất trong một mảng số nguyên.
+
+2. Tìm độ dài của dãy con không giảm dài nhất trong một mảng số nguyên.
+
+3. Tìm số lượng dãy con có tổng bằng một giá trị x trong một mảng số nguyên.
+
+4. Tìm dãy con chung dài nhất của hai mảng số nguyên.
+
+5. Tìm dãy con tăng dài nhất trong một mảng số nguyên.
+
+6. Tìm tất cả các dãy con con của một chuỗi.
+
+7. Tìm số lượng dãy con không giảm dài nhất trong một mảng số nguyên.
+
+8. Tìm tất cả các dãy con đối xứng trong một chuỗi.
+
+Tìm dãy con không chứa số âm dài nhất trong một mảng số nguyên.
+
+Tìm dãy con chứa số nguyên tố dài nhất trong một mảng số nguyên.
+
+Các bài tập này yêu cầu các kỹ thuật lập trình khác nhau, bao gồm duyệt mảng, sử dụng các vòng lặp và điều kiện, quản lý các biến và mảng phụ trợ.
